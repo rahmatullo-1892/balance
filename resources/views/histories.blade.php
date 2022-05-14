@@ -1,4 +1,4 @@
-@extends("components.template", ["title" => "Операции"])
+@extends("components.template", ["title" => "Операции", "sidebar" => "histories"])
 
 @section("content")
     <div class="page-title">Операции</div>

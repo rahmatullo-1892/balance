@@ -27,4 +27,10 @@ class Authorization extends BaseController
             'login' => 'Неправильно введены логин и/или пароль.',
         ]);
     }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('sign_in');
+    }
 }

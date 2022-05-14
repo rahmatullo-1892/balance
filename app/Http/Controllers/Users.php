@@ -26,7 +26,7 @@ class Users extends Controller
 
     public function getHistories()
     {
-        $histories = History::where("id", Auth::id())->orderByDesc("created_at")->limit(5)->get();
+        $histories = History::where("user_id", Auth::id())->orderByDesc("created_at")->limit(5)->get();
         echo view("components.histories_table", ["histories" => $histories])->render();
     }
 }

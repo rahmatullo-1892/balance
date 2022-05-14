@@ -1,4 +1,4 @@
-@extends("components.template", ["title" => "Личный кабинет"])
+@extends("components.template", ["title" => "Личный кабинет", "sidebar" => "main"])
 
 @section("content")
     <div class="page-title">Личный кабинет</div>
@@ -18,9 +18,6 @@
             </div>
         </div>
         <div class="col-8">
-            <div class="text-end mb-2">
-                <a href="{{ url("histories") }}">Показать всю историю</a>
-            </div>
             <table class="table table-bordered table-hover" id="histories_table">
                 <thead>
                 <tr>

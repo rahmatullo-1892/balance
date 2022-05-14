@@ -13,3 +13,5 @@ Route::post("/authorization", [Authorization::class, "authorization"]);
 Route::get("/histories", [Users::class, "histories"]);
 
 Route::get("/getHistories", [Users::class, "getHistories"]);
+
+Route::get("/logout", [Authorization::class, "logout"]);

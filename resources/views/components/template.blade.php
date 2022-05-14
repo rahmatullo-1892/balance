@@ -9,6 +9,7 @@
 </head>
 <body>
     <main>
+        @include("components.sidebar")
         <div class="container">
             @yield("content")
         </div>
