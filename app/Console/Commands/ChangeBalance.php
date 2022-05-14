@@ -4,10 +4,8 @@ namespace App\Console\Commands;
 
 use App\Models\Balance;
 use App\Models\History;
-use App\Models\User;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 
 class ChangeBalance extends Command
 {
@@ -47,19 +45,23 @@ class ChangeBalance extends Command
         $check = Balance::where("user_id", DB::raw("(SELECT id FROM users WHERE login='" . $login . "')"))->first();
         if ($check) {
             $sum = $this->ask('Сумма операции:');
-            if ($check->sum + $sum >= 0) {
-                $comments = $this->ask('Комментарий:');
-                Balance::where("id", $check->id)->update([
-                    "sum" => $check->sum + $sum
-                ]);
-                History::create([
-                    "user_id"   => $check->user_id,
-                    "sum"       => $sum,
-                    "comments"  => $comments
-                ]);
-                $this->info("Операция успешно проведена");
+            if (is_numeric($sum)) {
+                if ($check->sum + $sum >= 0) {
+                    $comments = $this->ask('Комментарий:');
+                    Balance::where("id", $check->id)->update([
+                        "sum" => $check->sum + $sum
+                    ]);
+                    History::create([
+                        "user_id"   => $check->user_id,
+                        "sum"       => $sum,
+                        "comments"  => $comments
+                    ]);
+                    $this->info("Операция успешно проведена");
+                } else {
+                    $this->warn("Баланс не может быть меньше нуля");
+                }
             } else {
-                $this->warn("Баланс не может быть меньше нуля");
+                $this->warn("Сумма указана неверно");
             }
         } else {
             $this->warn("Пользователь не найден");

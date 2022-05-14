@@ -13,11 +13,11 @@
                 @csrf
                 <h3 class="mb-3 fw-normal">Введите логин и пароль</h3>
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="login" placeholder="demo" required>
+                    <input type="text" class="form-control" id="login" name="login" placeholder="demo" required>
                     <label for="login">Логин</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="password" class="form-control" id="password" placeholder="******" required>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="******" required>
                     <label for="password">Пароль</label>
                 </div>
                 @if ($errors->any())
