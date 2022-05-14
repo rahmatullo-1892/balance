@@ -11,7 +11,9 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
+mix
+    .js('node_modules/bootstrap/dist/js/bootstrap.min.js', 'public/bootstrap/js')
+    .js('resources/js/app.js', 'public/js')
+    .postCss('node_modules/bootstrap/dist/css/bootstrap.min.css', 'public/bootstrap/css')
+    .postCss('resources/css/app.css', 'public/css')
+    .postCss('resources/css/signin.css', 'public/css');
